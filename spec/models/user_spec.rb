@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
   # Shoulda tests for name
   it { should have_many(:posts) }
+  it { should have_many(:comments) }
   it { should validate_presence_of(:name) }
   it { should validate_length_of(:name).is_at_least(1) }
 
@@ -67,17 +68,17 @@ RSpec.describe User, type: :model do
       context "member user" do
         it "should return true for #member?" do
           expect(user.member?).to be_truthy
+        end
       end
 
         it "should return false for #admin?" do
           expect(user.admin?).to be_falsey
         end
-      end
 
       context "admin user" do
         before do
           user.admin!
-      end
+       end
 
       it "should return false for #member?" do
         expect(user.member?).to be_falsey
@@ -88,3 +89,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
+end
