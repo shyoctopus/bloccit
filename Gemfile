@@ -22,6 +22,8 @@ group :development, :test do
    gem 'factory_girl_rails', '~> 4.0'
 end
 
+gem 'figaro'
+
 gem 'bootstrap-sass'
 
 gem 'bcrypt'
